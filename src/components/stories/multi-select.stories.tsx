@@ -53,13 +53,6 @@ PreselectedValues.args = {
   defaultValue: ["home", "profile"],
 };
 
-// Story with animation enabled
-export const WithAnimation = Template.bind({});
-WithAnimation.args = {
-  ...Default.args,
-  animation: 0.5,
-};
-
 // Story with a limited maxCount (only 2 items visible at a time)
 export const LimitedMaxCount = Template.bind({});
 LimitedMaxCount.args = {

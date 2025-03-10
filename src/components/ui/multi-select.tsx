@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import {
@@ -86,12 +85,6 @@ interface MultiSelectProps
   placeholder?: string;
 
   /**
-   * Animation duration in seconds for the visual effects (e.g., bouncing badges).
-   * Optional, defaults to 0 (no animation).
-   */
-  animation?: number;
-
-  /**
    * Maximum number of items to display. Extra selected items will be summarized.
    * Optional, defaults to 3.
    */
@@ -133,9 +126,9 @@ export const MultiSelect = React.forwardRef<
       variant,
       defaultValue = [],
       placeholder = "Select options",
-      animation = 0,
       maxCount = 3,
       modalPopover = false,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       asChild = false,
       placeholderSearch = "Search...",
       labelNoResult = "No results found.",
@@ -150,7 +143,6 @@ export const MultiSelect = React.forwardRef<
     const [selectedValues, setSelectedValues] =
       React.useState<string[]>(defaultValue);
     const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
-    const [isAnimating, _] = React.useState(false);
 
     const handleInputKeyDown = (
       event: React.KeyboardEvent<HTMLInputElement>
@@ -224,10 +216,8 @@ export const MultiSelect = React.forwardRef<
                       <Badge
                         key={value}
                         className={cn(
-                          isAnimating ? "animate-bounce" : "",
                           multiSelectVariants({ variant })
                         )}
-                        style={{ animationDuration: `${animation}s` }}
                       >
                         {IconComponent && (
                           <IconComponent className="h-4 w-4 mr-2" />
@@ -247,10 +237,8 @@ export const MultiSelect = React.forwardRef<
                     <Badge
                       className={cn(
                         "bg-transparent text-foreground border-foreground/1 hover:bg-transparent",
-                        isAnimating ? "animate-bounce" : "",
                         multiSelectVariants({ variant })
                       )}
-                      style={{ animationDuration: `${animation}s` }}
                     >
                       {`+ ${selectedValues.length - maxCount} more`}
                       <XCircle
