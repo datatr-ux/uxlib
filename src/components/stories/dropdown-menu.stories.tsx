@@ -12,13 +12,20 @@ import {
   DropdownMenuGroup,
   DropdownMenuRadioGroup,
 } from "../ui/dropdown-menu";
+import { DropdownMenuItemProps } from '@radix-ui/react-dropdown-menu';
 
 export default {
   title: "Components/DropdownMenu",
   component: DropdownMenu,
-} as Meta;
+  argTypes: {
+    variant: {
+      control: "select",
+      options: ["primary", "critical", "default"],
+    },
+  },
+} as Meta<DropdownMenuItemProps>;
 
-const Template: StoryFn = () => (
+const Template: StoryFn<DropdownMenuItemProps> = (args) => (
   <DropdownMenu>
     <DropdownMenuTrigger className="px-4 py-2 bg-primary text-white rounded">
       Open Menu
@@ -26,7 +33,7 @@ const Template: StoryFn = () => (
     <DropdownMenuContent>
       <DropdownMenuLabel>Actions</DropdownMenuLabel>
       <DropdownMenuGroup>
-        <DropdownMenuItem>New</DropdownMenuItem>
+        <DropdownMenuItem {...args}>New</DropdownMenuItem>
         <DropdownMenuItem>Open</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem checked>Option 1</DropdownMenuCheckboxItem>
@@ -43,3 +50,6 @@ const Template: StoryFn = () => (
 );
 
 export const Default = Template.bind({});
+Default.args={
+  variant: "default"
+}

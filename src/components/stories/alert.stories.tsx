@@ -8,7 +8,7 @@ export default {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "destructive"],
+      options: ["default", "destructive", "success", "warning","neutral"],
     },
   },
 } as Meta;
@@ -34,4 +34,14 @@ Default.args = {
 export const Destructive = Template.bind({});
 Destructive.args = {
   variant: "destructive",
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  variant: "success",
+};
+
+export const Warning = Template.bind({});
+Warning.args = {
+  variant: "warning",
 };

@@ -12,16 +12,19 @@ const buttonVariants = cva(
         primary: "bg-primary text-white hover:bg-primary-700 focus-visible:ring-primary",
         critical: "bg-critical text-white hover:bg-critical-700 focus-visible:ring-info",
         neutral: "bg-neutral text-white hover:bg-neutral-700 focus-visible:ring-neutral",
+        menu: "border text-primary border-primary border-2 font-semibold hover:bg-primary-100 rounded-full",
       },
       mode: {
         default: "",
         outline: "bg-transparent border",
         ghost: "bg-transparent",
+        menu: "bg-background",
       },
       size: {
         md: "px-4 py-2 text-base",
         sm: "px-3 py-1 text-sm",
         xs: "px-2 py-0.5 text-xs",
+        menu: "size-8 p-0"
       },
     },
     compoundVariants: [
