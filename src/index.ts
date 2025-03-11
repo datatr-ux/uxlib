@@ -54,6 +54,8 @@ export { Toaster } from "./components/ui/toaster";
 export { ToggleGroup, ToggleGroupItem } from "./components/ui/toggle-group";
 export { Toggle, toggleVariants } from "./components/ui/toggle";
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./components/ui/tooltip";
+export type { MultiSelectProps} from "./components/ui/multi-select";
+export { MultiSelect, multiSelectVariants } from "./components/ui/multi-select";
 // hooks
 export { useIsMobile } from './hooks/use-mobile';
 export { reducer, toast, useToast } from './hooks/use-toast';
