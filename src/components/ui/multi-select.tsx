@@ -53,7 +53,7 @@ const multiSelectVariants = cva(
 /**
  * Props for MultiSelect component
  */
-interface MultiSelectProps
+export interface MultiSelectProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof multiSelectVariants> {
   /**
@@ -115,7 +115,7 @@ interface MultiSelectProps
   placeholderSearch?: string;
 }
 
-export const MultiSelect = React.forwardRef<
+const MultiSelect = React.forwardRef<
   HTMLButtonElement,
   MultiSelectProps
 >(
@@ -348,3 +348,5 @@ export const MultiSelect = React.forwardRef<
 );
 
 MultiSelect.displayName = "MultiSelect";
+
+export { MultiSelect, multiSelectVariants }
