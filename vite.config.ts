@@ -24,6 +24,7 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ["react", "react-dom"],
+      treeshake: true,
       output: {
         globals: {
           react: "React",
