@@ -15,8 +15,8 @@ const buttonVariants = cva(
       },
       mode: {
         default: "",
-        outline: "bg-transparent border",
-        ghost: "bg-transparent",
+        outline: "bg-background border",
+        ghost: "bg-background",
       },
       size: {
         md: "px-4 py-2 text-base",

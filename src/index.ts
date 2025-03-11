@@ -54,6 +54,9 @@ export { Toaster } from "./components/ui/toaster";
 export { ToggleGroup, ToggleGroupItem } from "./components/ui/toggle-group";
 export { Toggle, toggleVariants } from "./components/ui/toggle";
 export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./components/ui/tooltip";
+export { TimePicker } from "./components/ui/time-picker";
+export type { TimePickerInputProps } from "./components/ui/time-picker-input";
+export { TimePickerInput } from "./components/ui/time-picker-input";
 // hooks
 export { useIsMobile } from './hooks/use-mobile';
 export { reducer, toast, useToast } from './hooks/use-toast';
