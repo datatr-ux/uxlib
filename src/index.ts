@@ -57,6 +57,8 @@ export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./comp
 export { TimePicker } from "./components/ui/time-picker";
 export type { TimePickerInputProps } from "./components/ui/time-picker-input";
 export { TimePickerInput } from "./components/ui/time-picker-input";
+// export type { MultiSelectProps} from "./components/ui/multi-select";
+// export { MultiSelect, multiSelectVariants } from "./components/ui/multi-select";
 // hooks
 export { useIsMobile } from './hooks/use-mobile';
 export { reducer, toast, useToast } from './hooks/use-toast';
