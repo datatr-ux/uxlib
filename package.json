@@ -1,25 +1,200 @@
 {
   "name": "@datatr-ux/uxlib",
-  "version": "0.0.9",
+  "version": "0.0.10-beta-12",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "components/*": [
+        "dist/components/ui/*"
+      ],
+      "hooks/*": [
+        "dist/hooks/*"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
-  "sideEffects": ["./dist/style.css"],
+  "sideEffects": [
+    "./dist/style.css"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.umd.cjs"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./components/accordion": {
+      "import": "./dist/components/ui/accordion.js"
+    },
+    "./components/alert-dialog": {
+      "import": "./dist/components/ui/alert-dialog.js"
+    },
+    "./components/alert": {
+      "import": "./dist/components/ui/alert.js"
+    },
+    "./components/aspect-ratio": {
+      "import": "./dist/components/ui/aspect-ratio.js"
+    },
+    "./components/avatar": {
+      "import": "./dist/components/ui/avatar.js"
+    },
+    "./components/badge": {
+      "import": "./dist/components/ui/badge.js"
+    },
+    "./components/breadcrumb": {
+      "import": "./dist/components/ui/breadcrumb.js"
+    },
+    "./components/button": {
+      "import": "./dist/components/ui/button.js"
+    },
+    "./components/calendar": {
+      "import": "./dist/components/ui/calendar.js"
+    },
+    "./components/card": {
+      "import": "./dist/components/ui/card.js"
+    },
+    "./components/carousel": {
+      "import": "./dist/components/ui/carousel.js"
+    },
+    "./components/chart": {
+      "import": "./dist/components/ui/chart.js"
+    },
+    "./components/checkbox": {
+      "import": "./dist/components/ui/checkbox.js"
+    },
+    "./components/code": {
+      "import": "./dist/components/ui/code.js"
+    },
+    "./components/collapsible": {
+      "import": "./dist/components/ui/collapsible.js"
+    },
+    "./components/command": {
+      "import": "./dist/components/ui/command.js"
+    },
+    "./components/context-menu": {
+      "import": "./dist/components/ui/context-menu.js"
+    },
+    "./components/dialog": {
+      "import": "./dist/components/ui/dialog.js"
+    },
+    "./components/drawer": {
+      "import": "./dist/components/ui/drawer.js"
+    },
+    "./components/dropdown-menu": {
+      "import": "./dist/components/ui/dropdown-menu.js"
+    },
+    "./components/form": {
+      "import": "./dist/components/ui/form.js"
+    },
+    "./components/hover-card": {
+      "import": "./dist/components/ui/hover-card.js"
+    },
+    "./components/input-otp": {
+      "import": "./dist/components/ui/input-otp.js"
+    },
+    "./components/input": {
+      "import": "./dist/components/ui/input.js"
+    },
+    "./components/label": {
+      "import": "./dist/components/ui/label.js"
+    },
+    "./components/menubar": {
+      "import": "./dist/components/ui/menubar.js"
+    },
+    "./components/multi-select": {
+      "import": "./dist/components/ui/multi-select.js"
+    },
+    "./components/navigation-menu": {
+      "import": "./dist/components/ui/navigation-menu.js"
+    },
+    "./components/pagination": {
+      "import": "./dist/components/ui/pagination.js"
+    },
+    "./components/popover": {
+      "import": "./dist/components/ui/popover.js"
+    },
+    "./components/progress": {
+      "import": "./dist/components/ui/progress.js"
+    },
+    "./components/radio-group": {
+      "import": "./dist/components/ui/radio-group.js"
+    },
+    "./components/resizable": {
+      "import": "./dist/components/ui/resizable.js"
+    },
+    "./components/scroll-area": {
+      "import": "./dist/components/ui/scroll-area.js"
+    },
+    "./components/select": {
+      "import": "./dist/components/ui/select.js"
+    },
+    "./components/separator": {
+      "import": "./dist/components/ui/separator.js"
+    },
+    "./components/sheet": {
+      "import": "./dist/components/ui/sheet.js"
+    },
+    "./components/sidebar": {
+      "import": "./dist/components/ui/sidebar.js"
+    },
+    "./components/skeleton": {
+      "import": "./dist/components/ui/skeleton.js"
+    },
+    "./components/slider": {
+      "import": "./dist/components/ui/slider.js"
+    },
+    "./components/sonner": {
+      "import": "./dist/components/ui/sonner.js"
+    },
+    "./components/switch": {
+      "import": "./dist/components/ui/switch.js"
+    },
+    "./components/table": {
+      "import": "./dist/components/ui/table.js"
+    },
+    "./components/tabs": {
+      "import": "./dist/components/ui/tabs.js"
+    },
+    "./components/textarea": {
+      "import": "./dist/components/ui/textarea.js"
+    },
+    "./components/time-picker-input": {
+      "import": "./dist/components/ui/time-picker-input.js"
+    },
+    "./components/time-picker-utils": {
+      "import": "./dist/components/ui/time-picker-utils.js"
+    },
+    "./components/time-picker": {
+      "import": "./dist/components/ui/time-picker.js"
+    },
+    "./components/toast": {
+      "import": "./dist/components/ui/toast.js"
+    },
+    "./components/toaster": {
+      "import": "./dist/components/ui/toaster.js"
+    },
+    "./components/toggle-group": {
+      "import": "./dist/components/ui/toggle-group.js"
+    },
+    "./components/toggle": {
+      "import": "./dist/components/ui/toggle.js"
+    },
+    "./components/tooltip": {
+      "import": "./dist/components/ui/tooltip.js"
+    },
+    "./hooks/use-toast": {
+      "import": "./dist/hooks/use-toast.js"
+    }
   },
   "homepage": "https://datatr-ux.github.io/uxlib",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "generate:exports": "node generate-exports.js",
+    "build": "tsc -b && vite build && npm run generate:exports",
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "npm run build",
@@ -67,6 +242,7 @@
     "next-themes": "^0.4.4",
     "react-day-picker": "^8.10.1",
     "react-resizable-panels": "^2.1.7",
+    "shiki": "^3.2.1",
     "sonner": "^1.7.1",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
@@ -102,6 +278,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "eslint-plugin-storybook": "^0.11.2",
+    "fast-glob": "^3.3.3",
     "gh-pages": "^6.2.0",
     "globals": "^15.14.0",
     "postcss": "^8.4.49",

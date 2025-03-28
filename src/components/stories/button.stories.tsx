@@ -18,7 +18,7 @@ export default {
     },
     size: {
       control: "select",
-      options: ["xs", "sm", "md", "menu"],
+      options: ["xs", "sm", "md", "lg", "menu"],
     },
     disabled: { control: "boolean" },
     children: { control: "text" },

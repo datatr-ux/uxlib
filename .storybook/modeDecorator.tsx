@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Moon } from "lucide-react";
 import React, { useState } from "react";
 export const ModeDecorator = (Story: any) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -13,17 +14,17 @@ export const ModeDecorator = (Story: any) => {
         onClick={toggleMode}
         style={{
           position: "fixed",
-          top: 10,
-          right: 10,
+          top: 0,
+          right: 0,
           zIndex: 9999,
-          padding: "8px 12px",
+          padding: "8px 8px",
           backgroundColor: isDarkMode ? "#333" : "#fff",
           color: isDarkMode ? "#fff" : "#333",
           border: "none",
           borderRadius: "5px",
         }}
       >
-        {isDarkMode ? "Light Mode" : "Dark Mode"}
+        <Moon size={10}/>
       </button>
       <Story />
     </>

@@ -19,13 +19,18 @@ export default defineConfig({
   build: {
     lib: {
       entry: ["src/index.ts"],
+      formats: ["es"],
+      name: 'uxlib',
       cssFileName: 'style',
-      name: 'uxlib'
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", 'react/jsx-runtime'],
       treeshake: true,
       output: {
+        preserveModules: true,
+        preserveModulesRoot: "src",
+        entryFileNames: "[name].js",
+        dir: "dist",
         globals: {
           react: "React",
           "react-dom": "ReactDOM",

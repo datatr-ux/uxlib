@@ -1,0 +1,19 @@
+.shiki code {
+  counter-reset: step;
+  counter-increment: 1 0;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.shiki .line {
+  font-family: 'Source Code Pro';
+}
+
+.shiki.showLines code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1rem;
+  display: inline-block;
+  text-align: right;
+  opacity: 0.7;
+}
