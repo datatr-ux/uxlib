@@ -34,7 +34,7 @@ export { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, Navigat
 export { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "./components/ui/pagination";
 export { Popover, PopoverContent, PopoverTrigger } from "./components/ui/popover";
 export { Progress } from "./components/ui/progress";
-export { RadioGroup, RadioGroupItem } from "./components/ui/radio-group";
+export { RadioGroup, RadioGroupItem, RadioTile } from "./components/ui/radio-group";
 export { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "./components/ui/resizable";
 export { ScrollArea, ScrollBar } from "./components/ui/scroll-area";
 export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue } from "./components/ui/select";
