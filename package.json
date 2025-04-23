@@ -1,6 +1,6 @@
 {
   "name": "@datatr-ux/uxlib",
-  "version": "0.0.10",
+  "version": "0.0.11-beta-8",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -250,16 +250,16 @@
   },
   "peerDependencies": {
     "@datatr-ux/ods-tailwind-config": "^1.0.3",
-    "@hookform/resolvers": "^3.3.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.50.1",
-    "recharts": "^2.13.3",
-    "zod": "^3.22.4"
+    "recharts": "^2.13.3"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.3",
+    "@datatr-ux/ods-tailwind-config": "^1.0.3",
     "@eslint/js": "^9.17.0",
+    "@hookform/resolvers": "^3.3.4",
     "@storybook/addon-controls": "^8.4.7",
     "@storybook/addon-docs": "^8.6.4",
     "@storybook/addon-essentials": "^8.4.7",
@@ -282,6 +282,7 @@
     "gh-pages": "^6.2.0",
     "globals": "^15.14.0",
     "postcss": "^8.4.49",
+    "react-hook-form": "^7.50.1",
     "storybook": "^8.4.7",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.6.2",

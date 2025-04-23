@@ -24,7 +24,7 @@ export default defineConfig({
       cssFileName: 'style',
     },
     rollupOptions: {
-      external: ["react", "react-dom", 'react/jsx-runtime'],
+      external: ["react", "react-dom", 'react/jsx-runtime', "react-hook-form", "recharts", "@datatr-ux/ods-tailwind-config"],
       treeshake: true,
       output: {
         preserveModules: true,
