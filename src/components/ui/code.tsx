@@ -5,9 +5,6 @@ import type { LanguageRegistration, ThemeRegistration } from "shiki";
 import "./code.css";
 import { Copy } from "lucide-react";
 import { Button } from "./button";
-import { createHighlighterCore } from "shiki/core";
-import { createOnigurumaEngine } from "shiki/engine/oniguruma";
-import wasm from 'shiki/wasm';
 // themes
 import githubDarkTheme from "@shikijs/themes/github-dark";
 import githubLightTheme from "@shikijs/themes/github-light";
@@ -30,6 +27,7 @@ import scssArr from "@shikijs/langs/scss";
 import javaArr from "@shikijs/langs/java";
 import goArr from "@shikijs/langs/go";
 import logArr from "@shikijs/langs/log";
+import { getHighlighterSingleton } from "@/lib/shikiHighlighter";
 
 export const javascript = javascriptArr[0];
 export const typescript = typescriptArr[0];
@@ -86,21 +84,26 @@ const Code = ({
 
   useEffect(() => {
     async function highlight() {
-      const highlighter = await createHighlighterCore({
-        themes: [theme],
-        langs: lang ? [lang] : [],
-        engine: createOnigurumaEngine(wasm)
-      });
-
-
+      const highlighter = await getHighlighterSingleton();
+  
+      // Dynamically load language if not already loaded
+      if (lang && !highlighter.getLoadedLanguages().includes(lang.name)) {
+        await highlighter.loadLanguage(lang);
+      }
+  
+      // Dynamically load theme if not already loaded
+      if (theme.name && !highlighter.getLoadedThemes().includes(theme.name)) {
+        await highlighter.loadTheme(theme);
+      }
+  
       const html = highlighter.codeToHtml(code, {
         lang: lang?.name || '',
         theme: theme,
       });
-
+  
       setHighlighted(html);
     }
-
+  
     highlight();
   }, [code, lang, theme]);
 
