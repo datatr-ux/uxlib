@@ -7,7 +7,7 @@ export { AspectRatio } from "./components/ui/aspect-ratio";
 export { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
 export type { BadgeProps } from "./components/ui/badge";
 export { Badge, badgeVariants } from "./components/ui/badge";
-export { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink } from "./components/ui/breadcrumb";
+export { Breadcrumb, BreadcrumbEllipsis, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "./components/ui/breadcrumb";
 export type { ButtonProps } from "./components/ui/button";
 export { Button, buttonVariants } from "./components/ui/button";
 export type { CalendarProps } from "./components/ui/calendar";
