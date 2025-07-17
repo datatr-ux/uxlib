@@ -47,7 +47,7 @@ const RadioTile = React.forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        "text-left border-2 p-4 rounded-md bg-card text-card-foreground shadow-sm data-[state=checked]:border-primary data-[state=checked]:bg-primary-50 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        "text-left p-4 rounded-md bg-card text-card-foreground data-[state=checked]:border-primary data-[state=checked]:bg-primary-50 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border border-border data-[state=checked]:shadow-[0_0_0_1px]",
         className
       )}
       {...props}
