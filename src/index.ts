@@ -58,7 +58,7 @@ export { TimePicker } from "./components/ui/time-picker";
 export type { TimePickerInputProps } from "./components/ui/time-picker-input";
 export { TimePickerInput } from "./components/ui/time-picker-input";
 // export type { CodeProps } from "./components/ui/code";
-export { Code, bash, cmd, css, docker, dockerfile, githubDark, githubLight, html, javascript, json, jsx, python, scss, tsx, typescript, xml, yaml, log, go, java } from "./components/ui/code";
+export { Code, bash, cmd, css, docker, dockerfile, githubDark, githubLight, html, javascript, json, jsx, python, scss, tsx, typescript, xml, yaml, log, go, java, terraform } from "./components/ui/code";
 export { MultiSelecSearchInput, MultiSelect, MultiSelectAllItems, MultiSelectClear, MultiSelectClose, MultiSelectContent, MultiSelectEmpty, MultiSelectGroup, MultiSelectItem, MultiSelectOptions, MultiSelectSeparator, MultiSelectTrigger, MultiSelectValue } from "./components/ui/multi-select";
 // hooks
 export { useIsMobile } from './hooks/use-mobile';

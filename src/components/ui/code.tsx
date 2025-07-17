@@ -27,29 +27,31 @@ import scssArr from "@shikijs/langs/scss";
 import javaArr from "@shikijs/langs/java";
 import goArr from "@shikijs/langs/go";
 import logArr from "@shikijs/langs/log";
+import terraformArr from "@shikijs/langs/terraform";
 import { getHighlighterSingleton } from "@/lib/shikiHighlighter";
 
-export const javascript = javascriptArr[0];
-export const typescript = typescriptArr[0];
-export const jsx = jsxArr[0];
-export const tsx = tsxArr[0];
-export const bash = bashArr[0];
-export const python = pythonArr[0];
-export const docker = dockerArr[0];
-export const dockerfile = dockerfileArr[0];
-export const yaml = yamlArr[0];
-export const cmd = cmdArr[0];
-export const xml = xmlArr[0];
-export const html = htmlArr[0];
-export const json = jsonArr[0];
-export const css = cssArr[0];
-export const scss = scssArr[0];
-export const java = javaArr[0];
-export const go = goArr[0];
-export const log = logArr[0];
+const javascript = javascriptArr[0];
+const typescript = typescriptArr[0];
+const jsx = jsxArr[0];
+const tsx = tsxArr[0];
+const bash = bashArr[0];
+const python = pythonArr[0];
+const docker = dockerArr[0];
+const dockerfile = dockerfileArr[0];
+const yaml = yamlArr[0];
+const cmd = cmdArr[0];
+const xml = xmlArr[0];
+const html = htmlArr[0];
+const json = jsonArr[0];
+const css = cssArr[0];
+const scss = scssArr[0];
+const java = javaArr[0];
+const go = goArr[0];
+const log = logArr[0];
+const terraform = terraformArr[0];
 
-export const githubDark = githubDarkTheme;
-export const githubLight = githubLightTheme;
+const githubDark = githubDarkTheme;
+const githubLight = githubLightTheme;
 
 interface CodeProps {
   code: string;
@@ -123,10 +125,11 @@ const Code = ({
             "flex justify-between items-center",
             "w-full p-2 py-2 z-10",
             "rounded-t-sm bg-neutral-700 text-neutral-200",
+            'font-semibold text-sm',
             topbarClassName
           )}
         >
-          <span className="font-semibold text-sm">{label}</span>
+          {label}
           {showCopyButton && (
             <Button
               aria-label="Copy code"
@@ -167,5 +170,26 @@ const Code = ({
 Code.displayName = "Code";
 
 export {
-  Code
+  Code,
+  javascript,
+  typescript,
+  jsx,
+  tsx,
+  bash,
+  python,
+  docker,
+  dockerfile,
+  yaml,
+  cmd,
+  xml,
+  html,
+  json,
+  css,
+  scss,
+  java,
+  go,
+  log,
+  terraform,
+  githubDark,
+  githubLight,
 };
