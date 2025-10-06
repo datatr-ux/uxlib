@@ -17,7 +17,7 @@ export type { CarouselApi } from "./components/ui/carousel";
 export { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./components/ui/carousel";
 export type { ChartConfig, ChartLegend, ChartTooltip } from "./components/ui/chart";
 export { ChartContainer, ChartLegendContent, ChartStyle, ChartTooltipContent } from "./components/ui/chart";
-export { Checkbox } from "./components/ui/checkbox";
+export { Checkbox, CheckboxIndicator, CheckboxTile } from "./components/ui/checkbox";
 export { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./components/ui/collapsible";
 export { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from "./components/ui/command";
 export { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuGroup, ContextMenuItem, ContextMenuLabel, ContextMenuPortal, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubContent, ContextMenuSubTrigger, ContextMenuTrigger } from "./components/ui/context-menu";
@@ -34,7 +34,7 @@ export { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, Navigat
 export { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "./components/ui/pagination";
 export { Popover, PopoverContent, PopoverTrigger } from "./components/ui/popover";
 export { Progress } from "./components/ui/progress";
-export { RadioGroup, RadioGroupItem, RadioTile } from "./components/ui/radio-group";
+export { RadioGroup, RadioGroupItem, RadioTile, RadioIndicator } from "./components/ui/radio-group";
 export { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "./components/ui/resizable";
 export { ScrollArea, ScrollBar } from "./components/ui/scroll-area";
 export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue } from "./components/ui/select";
