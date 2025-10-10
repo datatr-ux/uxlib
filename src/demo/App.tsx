@@ -1,4 +1,5 @@
-import { Badge, Button, Checkbox, CheckboxIndicator, CheckboxTile, RadioGroup, RadioGroupItem, RadioIndicator, RadioTile, Separator } from ".."
+import { Badge, Button, Card, CardContent, Checkbox, CheckboxIndicator, CheckboxTile, Clipboard, RadioGroup, RadioGroupItem, RadioIndicator, RadioTile, Separator } from ".."
+import { ClipboardActions, ClipboardCopyButton, ClipboardDownloadButton, ClipboardText } from "../components/ui/clipboard";
 import { Code, githubDark, javascript } from '../components/ui/code';
 import { Star } from 'lucide-react';
 function App() {
@@ -41,8 +42,10 @@ const CodeBlock = ({ code, language }) => {
 export { CodeBlock };
 `
 
+const lv = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem recusandae numquam est vero, ab, quibusdam voluptatibus animi cumque repellendus molestiae, commodi quam doloribus. Magnam debitis facilis reiciendis suscipit pariatur voluptates placeat quidem deserunt reprehenderit inventore error esse repudiandae molestiae fugit rerum eaque laudantium est, qui dolorem culpa! Sunt, doloremque voluptatem. Laudantium quaerat deleniti ut! Minus vel similique cumque deleniti, laboriosam repellendus eos laborum quidem rem dolor unde beatae dolorem illum autem omnis. Voluptate placeat molestias sed in! Commodi necessitatibus aspernatur corrupti saepe labore incidunt, cumque illum dolores at veritatis dolor sint fugiat alias animi, quibusdam excepturi perspiciatis cum assumenda et odit. Iusto repellendus voluptates corporis, molestias, quos explicabo, amet odit deserunt mollitia iure nihil exercitationem a veniam consequatur! Sint dolores accusamus eaque eligendi."
+
   return (
-    <>
+    <div className="max-w-6xl m-auto">
       <h1>h1</h1>
       <h2>h2</h2>
       <h3>h3</h3>
@@ -110,7 +113,28 @@ export { CodeBlock };
       </CheckboxTile>
       <Checkbox defaultChecked /> Check me
       </div>
-    </>
+
+
+      <div className="">
+        <Card>
+          <CardContent>
+            <div className="flex flex-col">
+            <Clipboard value={lv} />
+            <Clipboard value={lv} showDownloadButton />
+            <Clipboard value={lv} multiline/>
+            <Clipboard value={lv} className="bg-white" multiline>
+              <ClipboardText className="text-sm text-blue-500" />
+              <ClipboardActions className="gap-3">
+                <ClipboardCopyButton className="text-blue" />
+                <ClipboardDownloadButton fileName="hello.txt"/>
+              </ClipboardActions>
+            </Clipboard>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+      
+    </div>
   )
 }
 

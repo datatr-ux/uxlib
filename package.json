@@ -1,6 +1,6 @@
 {
   "name": "@datatr-ux/uxlib",
-  "version": "0.0.12-beta-4",
+  "version": "0.0.12-beta-5",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -65,6 +65,9 @@
     },
     "./components/checkbox": {
       "import": "./dist/components/ui/checkbox.js"
+    },
+    "./components/clipboard": {
+      "import": "./dist/components/ui/clipboard.js"
     },
     "./components/code": {
       "import": "./dist/components/ui/code.js"
