@@ -1,5 +1,5 @@
 import { Badge, Button, Card, CardContent, Checkbox, CheckboxIndicator, CheckboxTile, Clipboard, RadioGroup, RadioGroupItem, RadioIndicator, RadioTile, Separator } from ".."
-import { ClipboardActions, ClipboardCopyButton, ClipboardDownloadButton, ClipboardText } from "../components/ui/clipboard";
+import { ClipboardActions, ClipboardCopyButton, ClipboardDownloadButton, ClipboardSecretButton, ClipboardText } from "../components/ui/clipboard";
 import { Code, githubDark, javascript } from '../components/ui/code';
 import { Star } from 'lucide-react';
 function App() {
@@ -121,10 +121,12 @@ const lv = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem re
             <div className="flex flex-col">
             <Clipboard value={lv} />
             <Clipboard value={lv} showDownloadButton />
+            <Clipboard value={lv} showDownloadButton secret />
             <Clipboard value={lv} multiline/>
-            <Clipboard value={lv} className="bg-white" multiline>
+            <Clipboard value={lv} className="bg-white" multiline secret>
               <ClipboardText className="text-sm text-blue-500" />
               <ClipboardActions className="gap-3">
+                <ClipboardSecretButton />
                 <ClipboardCopyButton className="text-blue" />
                 <ClipboardDownloadButton fileName="hello.txt"/>
               </ClipboardActions>

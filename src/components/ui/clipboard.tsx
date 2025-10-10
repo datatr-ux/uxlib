@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Copy, Check, Download } from "lucide-react"
+import { Copy, Check, Download, EyeOff, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -13,6 +13,10 @@ interface ClipboardContextValue {
   copy: () => void
   download: (fileName: string) => void
   multiline: boolean
+  secret: boolean
+  visible: boolean
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>,
+  showDownloadButton: boolean
 }
 
 const ClipboardContext = React.createContext<ClipboardContextValue | null>(null)
@@ -36,6 +40,7 @@ export interface ClipboardProps
   multiline?: boolean
   showCopiedIcon?: boolean
   showDownloadButton?: boolean
+  secret?: boolean
 }
 
 
@@ -46,11 +51,13 @@ export function Clipboard({
   multiline = false,
   showCopiedIcon = true,
   showDownloadButton = false,
+  secret = false,
   className,
   children,
   ...props
 }: ClipboardProps) {
   const [copied, setCopied] = React.useState(false)
+  const [visible, setVisible] = React.useState(!secret)
   const timeoutRef = React.useRef<number | null>(null)
 
   const copy = React.useCallback(async () => {
@@ -85,7 +92,11 @@ export function Clipboard({
   const isSimple = !children
 
   return (
-    <ClipboardContext.Provider value={{ value, copied, copy, download, multiline }}>
+    <ClipboardContext.Provider value={{
+      value, copied, copy, download, multiline, secret,
+      visible,
+      setVisible, showDownloadButton
+    }}>
       <div
         className={cn(
           "relative z-0 flex w-full max-w-full rounded-md border bg-gray-50 overflow-hidden",
@@ -98,6 +109,9 @@ export function Clipboard({
           <>
             <ClipboardText />
             <ClipboardActions>
+              {secret && (
+                <ClipboardSecretButton />
+              )}
               <ClipboardCopyButton showCopiedIcon={showCopiedIcon} />
               {showDownloadButton && <ClipboardDownloadButton />}
             </ClipboardActions>
@@ -118,7 +132,17 @@ export function ClipboardText({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const { value, multiline } = useClipboardContext()
+  const { value, multiline, visible, secret, showDownloadButton } = useClipboardContext()
+
+  const displayedValue = visible ? value : "•".repeat(value.length)
+
+  const buttonCount = 1 + (secret ? 1 : 0) + (showDownloadButton ? 1 : 0)
+
+  const prClass = {
+    1: "pr-14", // copy only
+    2: "pr-20", // copy + one extra (download or secret)
+    3: "pr-32", // all three
+  }[buttonCount] ?? "pr-14"
 
   return (
     <div
@@ -126,7 +150,8 @@ export function ClipboardText({
       role="textbox"
       aria-readonly="true"
       className={cn(
-        "flex-1 px-3 py-2 font-mono text-sm text-muted-foreground w-full max-w-full pr-14",
+        "flex-1 pl-3 py-2 font-mono text-sm text-muted-foreground w-full max-w-full",
+        prClass,
         multiline
           ? "whitespace-pre-wrap break-words min-h-[4rem]"
           : "whitespace-nowrap overflow-x-auto",
@@ -135,7 +160,7 @@ export function ClipboardText({
       )}
       {...props}
     >
-      {value}
+      {displayedValue}
     </div>
   )
 }
@@ -196,12 +221,10 @@ export function ClipboardCopyButton({
     </Button>
   )
 }
-
 export function ClipboardDownloadButton({
   className,
   fileName = 'clipboard.txt',
-  ...props
-}: React.ComponentProps<typeof Button> & { fileName?: string }) {
+  ...props }: React.ComponentProps<typeof Button> & { fileName?: string }) {
   const { download } = useClipboardContext()
   return (
     <Button
@@ -210,9 +233,35 @@ export function ClipboardDownloadButton({
       onClick={() => download(fileName)}
       aria-label="Download clipboard content"
       className={cn("px-2 h-7", className)}
+      {...props} >
+      <Download className="h-4 w-4" />
+    </Button>
+  )
+}
+
+
+export function ClipboardSecretButton({
+  className,
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  const { secret, visible, setVisible } = useClipboardContext()
+
+  if (!secret) return null // Only render if secret mode is enabled
+
+  return (
+    <Button
+      mode="ghost"
+      size="sm"
+      onClick={() => setVisible((v) => !v)}
+      aria-label={visible ? "Hide value" : "Show value"}
+      className={cn("px-2 h-7", className)}
       {...props}
     >
-      <Download className="h-4 w-4" />
+      {visible ? (
+        <EyeOff className="h-4 w-4" />
+      ) : (
+        <Eye className="h-4 w-4" />
+      )}
     </Button>
   )
 }
