@@ -18,7 +18,7 @@ export { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 export type { ChartConfig, ChartLegend, ChartTooltip } from "./components/ui/chart";
 export { ChartContainer, ChartLegendContent, ChartStyle, ChartTooltipContent } from "./components/ui/chart";
 export { Checkbox, CheckboxIndicator, CheckboxTile } from "./components/ui/checkbox";
-export { Clipboard, ClipboardActions, ClipboardCopyButton, ClipboardDownloadButton, ClipboardText } from "./components/ui/clipboard";
+export { Clipboard, ClipboardActions, ClipboardCopyButton, ClipboardDownloadButton, ClipboardText, ClipboardSecretButton } from "./components/ui/clipboard";
 export type { ClipboardProps } from "./components/ui/clipboard";
 export { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./components/ui/collapsible";
 export { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from "./components/ui/command";

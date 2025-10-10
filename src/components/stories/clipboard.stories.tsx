@@ -33,6 +33,10 @@ export default {
       control: "boolean",
       description: "Display the download button next to the copy button.",
     },
+    secret: {
+      control: "boolean",
+      description: "Act as an input password.",
+    },
     className: {
       control: "text",
       description: "Additional CSS classes for the container.",
