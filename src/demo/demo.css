@@ -1,0 +1,6 @@
+@import '@ovhcloud/ods-themes/default';
+@import "../index.css";
+@tailwind base;/* 3️⃣ Then continue with Tailwind */
+@tailwind components;
+@tailwind utilities;
+

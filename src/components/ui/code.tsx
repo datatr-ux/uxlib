@@ -53,7 +53,7 @@ const terraform = terraformArr[0];
 const githubDark = githubDarkTheme;
 const githubLight = githubLightTheme;
 
-interface CodeProps {
+export interface CodeProps {
   code: string;
   lang?: LanguageRegistration;
   theme?: ThemeRegistration;

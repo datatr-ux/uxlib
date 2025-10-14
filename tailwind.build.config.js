@@ -1,11 +1,18 @@
-import odsPreset from "./tailwind.preset.js";
+// This config is used by the CLI to compile the CSS you ship in dist/style.css
+
+import preset from "./tailwind.preset.js";
+import animate from "tailwindcss-animate";
+
 /** @type {import('tailwindcss').Config} */
 export default {
-	darkMode: ['class'],
-	presets: [odsPreset],
-	content: ['./src/**/*.{js,jsx,ts,tsx}',
-  './src/demo/**/*.{js,jsx,ts,tsx}'],
-	theme: {
+  darkMode: ["class"],
+  presets: [preset],
+  // Scan ONLY your source components/hooks to capture the utility classes you use
+  content: [
+    "./src/components/**/*.{ts,tsx}",
+    "./src/hooks/**/*.{ts,tsx}",
+  ],
+  theme: {
 		extend: {
 			keyframes: {
 				'accordion-down': {
@@ -83,6 +90,8 @@ export default {
 			},
 		}
 	},
-	plugins: [require('tailwindcss-animate')],
+  plugins: [animate],
+  corePlugins: {
+    preflight: false,
+  },
 };
-

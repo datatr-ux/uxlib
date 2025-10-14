@@ -54,6 +54,8 @@ const lv = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem re
       <h6>h6</h6>
       <Button>Hello</Button>
       <Badge>Hello</Badge>
+      <Button mode={"ghost"}>Hello</Button>
+      <Badge variant={"beta"}>Hello</Badge>
       <p>This is a <span className='text-primary'>primary</span> text with <span className='text-primary-50'>lighter colors</span></p>
       <Code
         code={code}
