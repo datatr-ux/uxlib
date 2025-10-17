@@ -74,6 +74,7 @@ export const Calendar = /*#__PURE__*/ withUxlibDataAttr(_Calendar);
 
 // -------- Card
 import * as CardNS from "./components/ui/card";
+export { cardVariants } from "./components/ui/card";
 export const Card = /*#__PURE__*/ withUxlibDataAttr(CardNS.Card);
 export const CardContent = /*#__PURE__*/ withUxlibDataAttr(CardNS.CardContent);
 export const CardDescription = /*#__PURE__*/ withUxlibDataAttr(CardNS.CardDescription);

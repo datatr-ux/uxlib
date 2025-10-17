@@ -1,6 +1,6 @@
-import '../src/index.css'
+import '../src/demo/demo.css'
 import type { Preview } from "@storybook/react";
-import { ModeDecorator } from "./modeDecorator";
+// import { ModeDecorator } from "./modeDecorator";
 
 const preview: Preview = {
   parameters: {
@@ -12,6 +12,6 @@ const preview: Preview = {
     },
   },
 };
-export const decorators = [ModeDecorator];
+// export const decorators = [ModeDecorator];
 
 export default preview;

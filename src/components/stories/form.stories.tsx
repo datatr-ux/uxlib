@@ -14,8 +14,6 @@ import { Input } from "../ui/input"; // Example Input component
 import { Button } from '../ui/button';
 import { Toaster } from "../ui/toaster"; // Example Toaster component
 import { useToast } from '../../hooks/use-toast'; // Example Toast component
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 
 export default {
   title: "Components/Form",
@@ -24,11 +22,7 @@ export default {
 
 const Template: StoryFn = () => {
   const toast = useToast()
-  const schema = z.object({
-    username: z.string().min(1, "Username is required").max(20, "Username must be at most 20 characters long")
-  });
   const form = useForm({
-    resolver: zodResolver(schema),
     defaultValues: {
       username: "",
     },

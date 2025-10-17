@@ -2,7 +2,75 @@
 export default {
   theme: {
     extend: {
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
       colors: {
+        // background: "var(--background, var(--ods-color-white), #fff)",
+        foreground: "var(--foreground, var(--ods-color-text))",
+        card: {
+          DEFAULT: "var(--card, var(--ods-color-white))",
+          foreground: "var(--card-foreground, var(--ods-color-text))",
+        },
+        popover: {
+          DEFAULT: "var(--popover, var(--ods-color-white))",
+          foreground: "var(--popover-foreground, var(--ods-color-text))",
+        },
+        primary: {
+          DEFAULT: "var(--primary, var(--ods-color-primary-500))",
+          foreground: "var(--primary-foreground, var(--ods-color-white))",
+        },
+        secondary: {
+          DEFAULT: "var(--secondary, var(--ods-color-neutral-050))",
+          foreground: "var(--secondary-foreground, var(--ods-color-neutral-700))",
+        },
+        muted: {
+          DEFAULT: "var(--muted, var(--ods-color-neutral-050))",
+          foreground: "var(--muted-foreground, var(--ods-color-neutral-500))",
+        },
+        accent: {
+          DEFAULT: "var(--accent, var(--ods-color-primary-050))",
+          foreground: "var(--accent-foreground, var(--ods-color-text))",
+        },
+        destructive: {
+          DEFAULT: "var(--destructive, var(--ods-color-critical-500))",
+          foreground: "var(--destructive-foreground, var(--ods-color-white))",
+        },
+        // border: "var(--border, var(--ods-color-neutral-100))",
+        input: "var(--input, var(--ods-color-neutral-100))",
+        ring: "var(--ring, var(--ods-outline-color-default))",
+
+        chart: {
+          1: "hsl(var(--chart-1, 12 76% 61%))",
+          2: "hsl(var(--chart-2, 173 58% 39%))",
+          3: "hsl(var(--chart-3, 197 37% 24%))",
+          4: "hsl(var(--chart-4, 43 74% 66%))",
+          5: "hsl(var(--chart-5, 27 87% 67%))",
+        },
+
+        sidebar: {
+          DEFAULT: "var(--sidebar-background, var(--ods-color-white))",
+          foreground: "var(--sidebar-foreground, var(--ods-color-text))",
+          primary: "var(--sidebar-primary, var(--ods-color-primary-500))",
+          "primary-foreground": "var(--sidebar-primary-foreground, var(--ods-color-white))",
+          accent: "var(--sidebar-accent, var(--ods-color-primary-050))",
+          "accent-foreground": "var(--sidebar-accent-foreground, var(--ods-color-text))",
+          border: "var(--sidebar-border, var(--ods-color-neutral-100))",
+          ring: "var(--sidebar-ring, var(--ods-outline-color-default))",
+        },
+
+        transparent: "#FFFFFF00",
         primary: {
           DEFAULT: "var(--ods-color-primary-500)",
           0: "var(--ods-color-primary-000)",
@@ -129,11 +197,13 @@ export default {
           selected: "var(--ods-color-element-text-selected)",
         },
         background: {
+          DEFAULT: "var(--background, var(--ods-color-white), #fff)",
           disabled: "var(--ods-color-background-disabled-default)",
           readonly: "var(--ods-color-background-readonly-default)",
           selected: "var(--ods-color-element-background-selected)",
         },
         border: {
+          DEFAULT: "var(--border, var(--ods-color-neutral-100))",
           disabled: "var(--ods-color-border-disabled-default)",
           readonly: "var(--ods-color-border-readonly-default)",
           critical: "var(--ods-color-form-element-border-critical)",
@@ -175,14 +245,31 @@ export default {
         DEFAULT: "var(--ods-outline-color-default)",
       },
 
-      screens: {
-        "sub-mobile": "var(--ods-breakpoint-sub-mobile)",
-        mobile: "var(--ods-breakpoint-mobile)",
-        tablet: "var(--ods-breakpoint-tablet)",
-        desktop: "var(--ods-breakpoint-desktop)",
-        "large-screen": "var(--ods-breakpoint-large-screen)",
-        widescreen: "var(--ods-breakpoint-widescreen)",
+      fontSize: {
+        xs: "0.75rem",   // 12px (caption)
+        sm: "0.875rem",  // 14px
+        base: "1rem",    // 16px
+        lg: "1.125rem",  // 18px
+        xl: "1.25rem",   // 20px
+        "2xl": "1.5rem", // 24px
+        "3xl": "1.75rem",// 28px
+        "4xl": "2.25rem" // 36px
       },
+
+      fontWeight: {
+        normal: "400",
+        semibold: "600",
+        bold: "700",
+      },
+
+      // screens: {
+      //   "xs": "var(--ods-breakpoint-sub-mobile)",
+      //   sm: "var(--ods-breakpoint-mobile)",
+      //   md: "var(--ods-breakpoint-tablet)",
+      //   lg: "var(--ods-breakpoint-desktop)",
+      //   "xl": "var(--ods-breakpoint-large-screen)",
+      //   '2xl': "var(--ods-breakpoint-widescreen)",
+      // },
     },
   },
 };

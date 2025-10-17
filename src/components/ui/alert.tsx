@@ -4,36 +4,46 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const alertVariants = cva(
-  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground",
+  "relative inline-flex w-full items-start gap-2 p-2 box-border text-base",
   {
     variants: {
       variant: {
-        primary:
-          "border-transparent bg-blue-100 text-blue-700 [&>svg]:text-blue-700",
-        neutral: 
-          "bg-background text-foreground",
-        success:
-          "border-transparent bg-green-100 text-green-700 [&>svg]:text-green-700",
-        warning:
-            "border-transparent bg-yellow-200 text-yellow-800 [&>svg]:text-green-800",
-        destructive:
-          "border-transparent bg-red-100 text-red-700 [&>svg]:text-red-700",
+        critical: "bg-critical-75 text-critical-700",
+        information: "bg-information-75 text-information-700",
+        neutral: "bg-neutral-75 text-neutral-700",
+        primary: "bg-primary-500 text-primary-0",
+        success: "bg-success-75 text-success-700",
+        warning: "bg-warning-75 text-warning-700",
+      },
+      mode: {
+        default: "",
+        light: "bg-white", // overrides background with light mode
       },
     },
+    compoundVariants: [
+      // Light variants (white background + colored text)
+      { variant: "critical", mode: "light", class: "bg-neutral-0 text-critical-700" },
+      { variant: "information", mode: "light", class: "bg-neutral-0 text-information-700" },
+      { variant: "neutral", mode: "light", class: "bg-neutral-0 text-neutral-700" },
+      { variant: "primary", mode: "light", class: "bg-neutral-0 text-primary-700" },
+      { variant: "success", mode: "light", class: "bg-neutral-0 text-success-700" },
+      { variant: "warning", mode: "light", class: "bg-neutral-0 text-warning-700" },
+    ],
     defaultVariants: {
-      variant: "primary",
+      variant: "neutral",
+      mode: "default",
     },
-  }
-)
+  } as const
+) 
 
 const Alert = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>
->(({ className, variant, ...props }, ref) => (
+>(({ className, variant, mode, ...props }, ref) => (
   <div
     ref={ref}
     role="alert"
-    className={cn(alertVariants({ variant }), className)}
+    className={cn(alertVariants({ variant, mode }), className)}
     {...props}
   />
 ))
@@ -57,7 +67,7 @@ const AlertDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("text-sm [&_p]:leading-relaxed", className)}
+    className={cn("text-bases [&_p]:leading-relaxed", className)}
     {...props}
   />
 ))

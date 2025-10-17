@@ -5,14 +5,14 @@ import animate from "tailwindcss-animate";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ["class"],
-  presets: [preset],
-  // Scan ONLY your source components/hooks to capture the utility classes you use
-  content: [
-    "./src/components/**/*.{ts,tsx}",
-    "./src/hooks/**/*.{ts,tsx}",
-  ],
-  theme: {
+	darkMode: ["class"],
+	presets: [preset],
+	// Scan ONLY your source components/hooks to capture the utility classes you use
+	content: [
+		"./src/components/**/*.{ts,tsx}",
+		"./src/hooks/**/*.{ts,tsx}",
+	],
+	theme: {
 		extend: {
 			keyframes: {
 				'accordion-down': {
@@ -90,8 +90,70 @@ export default {
 			},
 		}
 	},
-  plugins: [animate],
-  corePlugins: {
-    preflight: false,
-  },
+	plugins: [animate],
+	corePlugins: {
+		preflight: false,
+	},
+	// important: '[data-uxlib]',
+	safelist: [
+  /* === Layout & Display === */
+  { pattern: /^(flex|inline-flex|grid|inline-grid|block|inline-block|hidden)$/ },
+  { pattern: /^(sm|md|lg|xl|2xl)\\:(flex|inline-flex|grid|inline-grid|block|inline-block|hidden)$/ },
+  { pattern: /^(flex|grid)-(row|col|wrap|nowrap|flow-row|flow-col)$/ },
+  { pattern: /^(sm|md|lg|xl|2xl)\\:(flex|grid)-(row|col|wrap|nowrap|flow-row|flow-col)$/ },
+
+  /* === Flex/Grid positioning === */
+  { pattern: /^items-(start|center|end|stretch|baseline)$/ },
+  { pattern: /^justify-(start|center|end|between|around|evenly)$/ },
+  { pattern: /^content-(start|center|end|between|around|evenly)$/ },
+  { pattern: /^(self|place)-(auto|start|center|end|stretch)$/ },
+  { pattern: /^(gap|space)-(x|y)?-\d+$/ },
+  { pattern: /^(sm|md|lg|xl|2xl)\\:(gap|space)-(x|y)?-\d+$/ },
+
+  /* === Width & Height === */
+  { pattern: /^(w|h|min-w|min-h|max-w|max-h)-(full|screen|auto|fit|[0-9]+)$/ },
+
+  /* === Spacing === */
+  { pattern: /^(m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl)-[0-9]+$/ },
+  { pattern: /^(sm|md|lg|xl|2xl)\\:(m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl)-[0-9]+$/ },
+
+  /* === Borders & Radii === */
+  { pattern: /^border(-(t|r|b|l))?(-(0|[1-9]|[0-9]{2,}))?$/ },
+  { pattern: /^rounded(-(sm|md|lg|xl|2xl|full))?$/ },
+
+  /* === Colors (ODS + Shadcn) === */
+  { pattern: /^bg-(primary|secondary|accent|neutral|critical|success|warning|information)(-\d{2,3})?$/ },
+  { pattern: /^text-(primary|secondary|accent|neutral|critical|success|warning|information|white|black)(-\d{2,3})?$/ },
+  { pattern: /^border-(primary|secondary|accent|neutral|critical|success|warning|information)(-\d{2,3})?$/ },
+
+  /* === State variants === */
+  { pattern: /^hover\\:(bg|text|border)-(primary|secondary|accent|neutral|critical|success|warning|information)(-\d{2,3})?$/ },
+  { pattern: /^focus\\:(ring|border|text|bg)-(primary|secondary|accent|neutral|critical|success|warning|information)(-\d{2,3})?$/ },
+  { pattern: /^active\\:(bg|border|text)-(primary|secondary|neutral|critical|success|warning|information)(-\d{2,3})?$/ },
+  { pattern: /^disabled\\:(opacity|cursor|bg|border|text)-?.*$/ },
+
+  /* === Typography === */
+  { pattern: /^text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl)$/ },
+  { pattern: /^font-(light|normal|medium|semibold|bold)$/ },
+  { pattern: /^leading-(none|tight|snug|normal|relaxed|loose)$/ },
+  { pattern: /^tracking-(tighter|tight|normal|wide|wider|widest)$/ },
+  { pattern: /^text-(left|center|right|justify)$/ },
+
+  /* === Transitions & Animations === */
+  { pattern: /^transition(-(all|colors|opacity|transform))?$/ },
+  { pattern: /^duration-\d+$/ },
+  { pattern: /^ease-(linear|in|out|in-out)$/ },
+  { pattern: /^(animate|motion-safe\\:animate|motion-reduce\\:animate)-.+$/ },
+
+  /* === Shadows & Effects === */
+  { pattern: /^shadow(-(sm|md|lg|xl|2xl|inner|none))?$/ },
+  { pattern: /^ring(-(0|1|2|4|8))?$/ },
+  { pattern: /^ring-(primary|accent|critical|neutral|information)$/ },
+  { pattern: /^opacity-(0|25|50|75|100)$/ },
+
+  /* === Responsive variants for layout === */
+  { pattern: /^(sm|md|lg|xl|2xl)\\:(grid|flex|block|hidden)$/ },
+  { pattern: /^(sm|md|lg|xl|2xl)\\:(items|justify|content|self|place)-.*$/ },
+],
+
 };

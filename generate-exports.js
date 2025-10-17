@@ -14,9 +14,7 @@ const baseExports = {
     "import": "./dist/index.js",
     "require": "./dist/index.umd.cjs"
   },
-  "./tailwind.preset": {
-    "import": "./tailwind.preset.js"
-  },
+  "./tailwind.preset": "./dist/tailwind.preset.js",
   "./style.css": "./dist/style.css"
 };
 

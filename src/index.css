@@ -1,3 +1,4 @@
+/* src/index.css */
 @layer base {
   :root {
     --sidebar-background: theme(colors.white);
@@ -30,7 +31,9 @@
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%}
+    --chart-5: 27 87% 67%;
+  }
+
   .dark {
     --sidebar-background: theme(colors.gray.800);
     --sidebar-foreground: theme(colors.white);
@@ -62,120 +65,64 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 
-  /* === Typography === */
   body {
     margin: 0;
-    color: var(--ods-color-text);
     font-family: "Source Sans Pro", "Trebuchet MS", arial, "Segoe UI", sans-serif;
     font-size: 16px;
     font-weight: 400;
     background-color: var(--background);
+    color: var(--ods-color-text);
   }
 
-  p {
-    margin: 0;
-    color: var(--ods-color-text);
-    font-size: 16px;
-    font-weight: 400;
+  :where([data-uxlib]) {
+    font-family: "Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif;
   }
 
-  span {
-    color: var(--ods-color-text);
-    font-size: 16px;
-    font-weight: 400;
+  :where([data-uxlib]),
+  :where([data-uxlib])::before,
+  :where([data-uxlib])::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: var(--border);
   }
 
   h1 {
-    margin: 0;
-    color: var(--ods-color-heading);
-    font-size: 36px;
-    font-weight: 700;
+    @apply text-[36px] font-bold text-[color:var(--ods-color-heading)] m-0;
   }
-
   h2 {
-    margin: 0;
-    color: var(--ods-color-heading);
-    font-size: 28px;
-    font-weight: 700;
+    @apply text-[28px] font-bold text-[color:var(--ods-color-heading)] m-0;
   }
-
   h3 {
-    margin: 0;
-    color: var(--ods-color-heading);
-    font-size: 24px;
-    font-weight: 700;
+    @apply text-[24px] font-bold text-[color:var(--ods-color-heading)] m-0;
   }
-
   h4 {
-    margin: 0;
-    color: var(--ods-color-heading);
-    font-size: 20px;
-    font-weight: 700;
+    @apply text-[20px] font-bold text-[color:var(--ods-color-heading)] m-0;
   }
-
   h5 {
-    margin: 0;
-    color: var(--ods-color-heading);
-    font-size: 18px;
-    font-weight: 700;
+    @apply text-[18px] font-bold text-[color:var(--ods-color-heading)] m-0;
   }
-
   h6 {
-    margin: 0;
-    color: var(--ods-color-heading);
-    font-size: 16px;
-    font-weight: 700;
+    @apply text-[16px] font-bold text-[color:var(--ods-color-heading)] m-0;
   }
 
-  label {
-    color: var(--ods-color-text);
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  code {
-    color: var(--ods-color-text);
-    font-family: var(--ods-font-family-code);
-    font-size: 16px;
-    font-weight: 400;
-  }
-
-  small {
-    color: var(--ods-color-text);
-    font-size: 12px;
-    font-weight: 400;
-  }
-
-  /* === Dark theme overrides === */
-  .dark body,
-  .dark p,
-  .dark span,
-  .dark label,
-  .dark code,
-  .dark small,
   .dark h1,
   .dark h2,
   .dark h3,
   .dark h4,
   .dark h5,
   .dark h6 {
-    color: var(--ods-color-text-inverse, var(--ods-color-white));
+    @apply text-[color:var(--ods-color-white)];
   }
-}
-/* /reset */
-@layer base {
-  :where([data-uxlib]) {
-    font-family: "Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif;
+
+  svg {
+    @apply flex-shrink-0 flex-grow-0 inline-block align-middle;
   }
-  :where([data-uxlib]),
-  :where([data-uxlib])::before,
-  :where([data-uxlib])::after {
-    box-sizing: border-box;
-    border-width: 0;             /* utilities (e.g., .border) override this */
-    border-style: solid;         /* keep solid so borders show when width > 0 */
-    border-color: var(--border); /* your theme variable */
+
+  p {
+    @apply m-0;
   }
 }
