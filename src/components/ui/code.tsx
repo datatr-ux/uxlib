@@ -155,6 +155,7 @@ const Code = ({
           "[&>pre]:rounded-b-sm",
           "[&>pre]:overflow-x-auto",
           "[&>pre]:p-2",
+          "[&>pre]:m-0",
           "overflow-auto",
           wrap && '[&>pre]:whitespace-pre-wrap [&>pre]:break-all',
           showTopbar && "pt-9",
