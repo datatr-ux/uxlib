@@ -98,8 +98,17 @@ export function Clipboard({
       setVisible, showDownloadButton
     }}>
       <div
+        style={{
+          // Firefox scrollbar control
+          scrollbarWidth: multiline ? "auto" : "none",
+          msOverflowStyle: multiline ? "auto" : "none", // legacy Edge/IE
+        }}
         className={cn(
-          "relative z-0 flex w-full max-w-full rounded-md border bg-gray-50 overflow-hidden",
+          "relative z-0 flex w-full max-w-full rounded-sm border bg-gray-50",
+          // Base overflow control
+          multiline ? "overflow-y-auto overflow-x-hidden" : "overflow-hidden",
+          // Hide horizontal scrollbar (Chrome, Safari, Edge)
+          "[&::-webkit-scrollbar:horizontal]:hidden",
           "focus-within:z-10 focus-within:ring-1 focus-within:ring-ring",
           className
         )}
@@ -149,6 +158,11 @@ export function ClipboardText({
       tabIndex={0}
       role="textbox"
       aria-readonly="true"
+      style={{
+          // Firefox scrollbar control
+          scrollbarWidth: multiline ? "auto" : "none",
+          msOverflowStyle: multiline ? "auto" : "none", // legacy Edge/IE
+        }}
       className={cn(
         "flex-1 pl-3 py-2 font-mono text-sm text-muted-foreground w-full max-w-full",
         prClass,

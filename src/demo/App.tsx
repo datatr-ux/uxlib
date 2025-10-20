@@ -117,7 +117,7 @@ const lv = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem re
       </div>
 
 
-      <div className="">
+      <div className="grid grid-cols-1">
         <Card>
           <CardContent>
             <div className="flex flex-col">
