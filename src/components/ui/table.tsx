@@ -8,7 +8,11 @@ const Table = React.forwardRef<
   <div className="relative w-full overflow-auto">
     <table
       ref={ref}
-      className={cn("w-full border-collapse caption-bottom text-base", className)}
+      className={cn(
+        // add outer border
+        "w-full border border-neutral-100 border-collapse caption-bottom text-base",
+        className
+      )}
       {...props}
     />
   </div>
@@ -21,14 +25,7 @@ const TableHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <thead
     ref={ref}
-    className={cn(
-      // Header cells background, color, and border
-      "[&_tr>th]:bg-neutral-50 [&_tr>th]:text-primary-800 [&_tr>th]:font-semibold",
-      "[&_tr>th]:border [&_tr>th]:border-neutral-100",
-      // Include consistent height and line-height
-      "[&_tr>th]:px-2 [&_tr>th]:py-4 [&_tr>th]:leading-[1rem] [&_tr>th]:align-middle",
-      className
-    )}
+    className={cn("bg-neutral-50 text-primary-800 font-semibold", className)}
     {...props}
   />
 ))
@@ -40,18 +37,7 @@ const TableBody = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <tbody
     ref={ref}
-    className={cn(
-      // Background and text colors
-      "[&_tr>th]:bg-neutral-0 [&_tr>td]:bg-neutral-0",
-      "[&_tr>th]:text-text [&_tr>td]:text-text",
-      // Borders
-      "[&_tr>th]:border-y [&_tr>td]:border-y [&_tr>*]:border-neutral-100",
-      "[&_tr>th:first-child]:border-l [&_tr>td:first-child]:border-l",
-      "[&_tr>th:last-child]:border-r  [&_tr>td:last-child]:border-r",
-      // Padding and line-height (matching SASS)
-      "[&_tr>th]:px-2 [&_tr>th]:py-4 [&_tr>td]:px-2 [&_tr>td]:py-4 [&_tr>th]:leading-[1rem] [&_tr>td]:leading-[1rem]",
-      className
-    )}
+    className={cn("bg-neutral-0 text-text", className)}
     {...props}
   />
 ))
@@ -94,7 +80,12 @@ const TableHead = React.forwardRef<
   <th
     ref={ref}
     className={cn(
-      "text-left font-semibold bg-neutral-50 text-primary-800 border border-neutral-100 align-middle leading-[1rem] px-2 py-4",
+      // Base appearance
+      "text-left font-semibold text-primary-800 bg-neutral-50",
+      // Borders
+      "border border-neutral-100",
+      // Spacing and alignment
+      "align-middle leading-[1rem] px-2 py-4",
       className
     )}
     {...props}
@@ -109,7 +100,12 @@ const TableCell = React.forwardRef<
   <td
     ref={ref}
     className={cn(
-      "bg-neutral-0 text-text border-y border-neutral-100 align-middle leading-[1rem] px-2 py-4",
+      // Base appearance
+      "bg-neutral-0 text-text",
+      // Borders
+      "border-y border-neutral-100",
+      // Spacing and alignment
+      "align-middle leading-[1rem] px-2 py-4",
       className
     )}
     {...props}
