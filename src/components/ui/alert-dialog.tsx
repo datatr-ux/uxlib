@@ -94,7 +94,7 @@ const AlertDialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDiv
 )
 
 const AlertDialogBody = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("px-6 py-1 pb-6 overflow-auto flex-1", className)} {...props} />
+  <div className={cn("px-6 py-1 overflow-auto flex-1", className)} {...props} />
 )
 
 const AlertDialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
