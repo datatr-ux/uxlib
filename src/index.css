@@ -11,6 +11,12 @@
      1) Variables (light)
      ------------------------- */
   :root {
+    /* Non exposed ODS colors */
+    --ods-color-neutral-075: #ececec;
+    --ods-color-information-075: #cef5ff;
+    --ods-color-success-075: #ddf5d1;
+    --ods-color-warning-075: #feefa4;
+    --ods-color-critical-075: #ffd9e3;
     /* Sidebar */
     --sidebar-background: #ffffff;
     --sidebar-foreground: var(--ods-color-text, #0a0a0a);

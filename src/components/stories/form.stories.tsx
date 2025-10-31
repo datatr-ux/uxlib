@@ -16,7 +16,8 @@ import { Toaster } from "../ui/toaster"; // Example Toaster component
 import { useToast } from '../../hooks/use-toast'; // Example Toast component
 
 export default {
-  title: "Components/Form",
+  title: "Components/Form (⚠️ deprecated - use Field)",
+  tags: ['deprecated'],
   component: Form,
 } as Meta;
 
@@ -27,7 +28,6 @@ const Template: StoryFn = () => {
       username: "",
     },
   });
-  console.log(form)
 
   return (
     <>

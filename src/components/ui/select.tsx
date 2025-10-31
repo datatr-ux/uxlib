@@ -20,7 +20,7 @@ const SelectTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       // Match ODS Input look
-      "box-border flex h-8 w-full items-center justify-between rounded-sm border border-[#b3b3b3] bg-white px-2.5 py-[3px] text-base text-text placeholder:text-neutral-500",
+      "box-border flex h-10 w-full items-center justify-between rounded-md border border-[#b3b3b3] bg-white px-2.5 py-[3px] text-sm text-text placeholder:text-neutral-500",
       // Hover + focus
       "hover:border-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2",
       // Disabled

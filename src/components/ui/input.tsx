@@ -9,7 +9,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
         type={type}
         className={cn(
           // Base ODS look
-          "box-border flex h-8 w-full rounded-sm border border-[#b3b3b3] bg-white px-2.5 py-[3px] text-base text-text placeholder:text-neutral-500",
+          "box-border flex h-10 w-full rounded-md border border-[#b3b3b3] bg-white px-2.5 py-[3px] text-base text-text placeholder:text-neutral-500",
           // Hover + focus
           "hover:border-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2",
           // Disabled

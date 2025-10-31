@@ -20,11 +20,9 @@ RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 
 const RadioIndicator = ({
   className,
-}: {
-  className?: string
-}) => (
+  ...props
+}: React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Indicator>) => (
   <div
-    data-uxlib
     className={cn(
       // base shape
       "aspect-square h-4 w-4 rounded-full flex items-center justify-center transition-all duration-150",
@@ -39,6 +37,7 @@ const RadioIndicator = ({
     )}
   >
     <RadioGroupPrimitive.Indicator
+      {...props}
       className={cn(
         // ODS checked: primary border + fill
         "flex items-center justify-center w-full h-full rounded-full transition-colors duration-150",
@@ -46,7 +45,7 @@ const RadioIndicator = ({
       )}
     >
       {/* Inner white dot (ODS `::before`) */}
-      <span className="block w-1 h-1 rounded-full bg-primary-0 transition-transform duration-150 scale-100" data-uxlib/>
+      <span className="block w-1 h-1 rounded-full bg-primary-0 transition-transform duration-150 scale-100" />
     </RadioGroupPrimitive.Indicator>
   </div>
 )

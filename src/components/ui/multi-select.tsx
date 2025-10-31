@@ -99,7 +99,7 @@ const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelectTrigge
           variant="neutral"
           mode={"outline"}
           role="combobox"
-          className={cn("min-h-10 h-auto flex flex-wrap justify-start gap-2 hover:bg-background active:bg-background focus:bg-background", className)}
+          className={cn("min-h-10 h-auto flex flex-wrap justify-start gap-1 hover:bg-background active:bg-background focus:bg-background py-1", className)}
           {...props}
         >
           {value.length > 0 ? (

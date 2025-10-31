@@ -104,7 +104,7 @@ export function Clipboard({
           msOverflowStyle: multiline ? "auto" : "none", // legacy Edge/IE
         }}
         className={cn(
-          "relative z-0 flex w-full max-w-full rounded-sm border bg-gray-50",
+          "relative z-0 flex w-full max-w-full rounded-md border bg-gray-50",
           // Base overflow control
           multiline ? "overflow-y-auto overflow-x-hidden" : "overflow-hidden",
           // Hide horizontal scrollbar (Chrome, Safari, Edge)
