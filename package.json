@@ -1,6 +1,6 @@
 {
   "name": "@datatr-ux/uxlib",
-  "version": "1.0.0-alpha-19",
+  "version": "1.0.0-alpha-20",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
@@ -50,6 +50,9 @@
     "./components/breadcrumb": {
       "import": "./dist/components/ui/breadcrumb.js"
     },
+    "./components/button-group": {
+      "import": "./dist/components/ui/button-group.js"
+    },
     "./components/button": {
       "import": "./dist/components/ui/button.js"
     },
@@ -92,17 +95,32 @@
     "./components/dropdown-menu": {
       "import": "./dist/components/ui/dropdown-menu.js"
     },
+    "./components/empty": {
+      "import": "./dist/components/ui/empty.js"
+    },
+    "./components/field": {
+      "import": "./dist/components/ui/field.js"
+    },
     "./components/form": {
       "import": "./dist/components/ui/form.js"
     },
     "./components/hover-card": {
       "import": "./dist/components/ui/hover-card.js"
     },
+    "./components/input-group": {
+      "import": "./dist/components/ui/input-group.js"
+    },
     "./components/input-otp": {
       "import": "./dist/components/ui/input-otp.js"
     },
     "./components/input": {
       "import": "./dist/components/ui/input.js"
+    },
+    "./components/item": {
+      "import": "./dist/components/ui/item.js"
+    },
+    "./components/kbd": {
+      "import": "./dist/components/ui/kbd.js"
     },
     "./components/label": {
       "import": "./dist/components/ui/label.js"
@@ -112,6 +130,9 @@
     },
     "./components/multi-select": {
       "import": "./dist/components/ui/multi-select.js"
+    },
+    "./components/native-select": {
+      "import": "./dist/components/ui/native-select.js"
     },
     "./components/navigation-menu": {
       "import": "./dist/components/ui/navigation-menu.js"
@@ -154,6 +175,9 @@
     },
     "./components/sonner": {
       "import": "./dist/components/ui/sonner.js"
+    },
+    "./components/spinner": {
+      "import": "./dist/components/ui/spinner.js"
     },
     "./components/switch": {
       "import": "./dist/components/ui/switch.js"
