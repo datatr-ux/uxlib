@@ -1,12 +1,54 @@
 "use client"
 
 import { useMemo } from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-
+import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 
+// ─────────────────────────────────────
+// 🎨 Variants
+// ─────────────────────────────────────
+const fieldConfig = {
+  orientation: {
+    vertical: [
+      "flex-col [&>*]:w-full [&>.sr-only]:w-auto",
+    ],
+    horizontal: [
+      "flex-row items-center",
+      "[&>[data-slot=field-label]]:flex-auto",
+      "has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+    ],
+    responsive: [
+      "flex-col [&>*]:w-full [&>.sr-only]:w-auto md:flex-row md:items-center md:[&>*]:w-auto",
+      "md:[&>[data-slot=field-label]]:flex-auto",
+      "md:has-[>[data-slot=field-content]]:items-start md:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+    ],
+  },
+} as const
+
+export const fieldVariants = cva(
+  "group/field flex w-full gap-3 data-[invalid=true]:text-destructive",
+  {
+    variants: fieldConfig,
+    defaultVariants: {
+      orientation: "vertical",
+    },
+  }
+)
+
+// ─────────────────────────────────────
+// 🧠 Auto-extracted types
+// ─────────────────────────────────────
+export type FieldOrientation = keyof typeof fieldConfig.orientation
+
+export interface FieldProps extends React.HTMLAttributes<HTMLDivElement> {
+  orientation?: FieldOrientation
+}
+
+// ─────────────────────────────────────
+// ⚙️ Components
+// ─────────────────────────────────────
 function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
   return (
     <fieldset
@@ -54,35 +96,11 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-const fieldVariants = cva(
-  "group/field flex w-full gap-3 data-[invalid=true]:text-destructive",
-  {
-    variants: {
-      orientation: {
-        vertical: ["flex-col [&>*]:w-full [&>.sr-only]:w-auto"],
-        horizontal: [
-          "flex-row items-center",
-          "[&>[data-slot=field-label]]:flex-auto",
-          "has-[>[data-slot=field-content]]:items-start has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
-        ],
-        responsive: [
-  "flex-col [&>*]:w-full [&>.sr-only]:w-auto md:flex-row md:items-center md:[&>*]:w-auto",
-  "md:[&>[data-slot=field-label]]:flex-auto",
-  "md:has-[>[data-slot=field-content]]:items-start md:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
-],
-      },
-    },
-    defaultVariants: {
-      orientation: "vertical",
-    },
-  }
-)
-
 function Field({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof fieldVariants>) {
+}: FieldProps) {
   return (
     <div
       role="group"
@@ -107,10 +125,7 @@ function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function FieldLabel({
-  className,
-  ...props
-}: React.ComponentProps<typeof Label>) {
+function FieldLabel({ className, ...props }: React.ComponentProps<typeof Label>) {
   return (
     <Label
       data-slot="field-label"
@@ -157,9 +172,7 @@ function FieldSeparator({
   children,
   className,
   ...props
-}: React.ComponentProps<"div"> & {
-  children?: React.ReactNode
-}) {
+}: React.ComponentProps<"div"> & { children?: React.ReactNode }) {
   return (
     <div
       data-slot="field-separator"
@@ -192,21 +205,14 @@ function FieldError({
   errors?: Array<{ message?: string } | undefined>
 }) {
   const content = useMemo(() => {
-    if (children) {
-      return children
-    }
-
-    if (!errors?.length) {
-      return null
-    }
+    if (children) return children
+    if (!errors?.length) return null
 
     const uniqueErrors = [
-      ...new Map(errors.map((error) => [error?.message, error])).values(),
+      ...new Map(errors.map((e) => [e?.message, e])).values(),
     ]
 
-    if (uniqueErrors?.length == 1) {
-      return uniqueErrors[0]?.message
-    }
+    if (uniqueErrors.length === 1) return uniqueErrors[0]?.message
 
     return (
       <ul className="ml-4 flex list-disc flex-col gap-1">
@@ -218,9 +224,7 @@ function FieldError({
     )
   }, [children, errors])
 
-  if (!content) {
-    return null
-  }
+  if (!content) return null
 
   return (
     <div
@@ -234,6 +238,9 @@ function FieldError({
   )
 }
 
+// ─────────────────────────────────────
+// 📤 Exports
+// ─────────────────────────────────────
 export {
   Field,
   FieldLabel,

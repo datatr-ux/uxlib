@@ -5,33 +5,30 @@ import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-const Dialog = DialogPrimitive.Root
-const DialogTrigger = DialogPrimitive.Trigger
-const DialogPortal = DialogPrimitive.Portal
-const DialogClose = DialogPrimitive.Close
-
 // ─────────────────────────────────────
-// Variants (ODS color bar)
+// 🎨 Variants (ODS color bar)
 // ─────────────────────────────────────
-type Variant =
-  | "neutral"
-  | "information"
-  | "primary"
-  | "success"
-  | "warning"
-  | "critical"
-
-const VAR_BG: Record<Variant, string> = {
+export const dialogVariants = {
   neutral: "bg-neutral-75",
   information: "bg-information-75",
   primary: "bg-primary-500",
   success: "bg-success-75",
   warning: "bg-warning-75",
   critical: "bg-critical-75",
-}
+} as const
+
+export type DialogVariant = keyof typeof dialogVariants
 
 // ─────────────────────────────────────
-// Overlay
+// 📦 Base primitives
+// ─────────────────────────────────────
+const Dialog = DialogPrimitive.Root
+const DialogTrigger = DialogPrimitive.Trigger
+const DialogPortal = DialogPrimitive.Portal
+const DialogClose = DialogPrimitive.Close
+
+// ─────────────────────────────────────
+// 🌫 Overlay
 // ─────────────────────────────────────
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
@@ -49,12 +46,12 @@ const DialogOverlay = React.forwardRef<
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
 // ─────────────────────────────────────
-// Content wrapper
+// 🧱 Content wrapper
 // ─────────────────────────────────────
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
-    variant?: Variant
+    variant?: DialogVariant
   }
 >(({ className, children, variant, ...props }, ref) => (
   <DialogPortal>
@@ -73,7 +70,7 @@ const DialogContent = React.forwardRef<
       <div
         className={cn(
           "h-[32px] w-full shrink-0 flex items-center justify-end px-3",
-          variant ? VAR_BG[variant] : "bg-transparent"
+          variant ? dialogVariants[variant] : "bg-transparent"
         )}
       >
         <DialogPrimitive.Close
@@ -96,31 +93,25 @@ const DialogContent = React.forwardRef<
 ))
 DialogContent.displayName = DialogPrimitive.Content.displayName
 
-
 // ─────────────────────────────────────
-// Slots
+// 🧩 Slots
 // ─────────────────────────────────────
-const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+const DialogHeader = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn(
-      "px-6 pt-4 pb-4 flex flex-col space-y-2 shrink-0",
-      className
-    )}
+    className={cn("px-6 pt-4 pb-4 flex flex-col space-y-2 shrink-0", className)}
     {...props}
   />
 )
-
-
 
 const DialogBody = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn(
-      "px-6 py-1 overflow-auto overflow-x-auto flex-1",
-      className
-    )}
+    className={cn("px-6 py-1 overflow-auto overflow-x-auto flex-1", className)}
     {...props}
   />
 )
@@ -162,6 +153,9 @@ const DialogDescription = React.forwardRef<
 ))
 DialogDescription.displayName = DialogPrimitive.Description.displayName
 
+// ─────────────────────────────────────
+// 📤 Exports
+// ─────────────────────────────────────
 export {
   Dialog,
   DialogTrigger,

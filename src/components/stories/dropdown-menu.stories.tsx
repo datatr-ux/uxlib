@@ -45,6 +45,12 @@ const Template: StoryFn<DropdownMenuItemProps> = (args) => (
         <DropdownMenuRadioItem value="grid">Grid View</DropdownMenuRadioItem>
         <DropdownMenuRadioItem value="list">List View</DropdownMenuRadioItem>
       </DropdownMenuRadioGroup>
+      <DropdownMenuSeparator />
+        <DropdownMenuItem variant='critical'>critical</DropdownMenuItem>
+        <DropdownMenuItem variant='primary'>primary</DropdownMenuItem>
+        <DropdownMenuItem variant='neutral'>neutral</DropdownMenuItem>
+        <DropdownMenuItem variant='success'>success</DropdownMenuItem>
+        <DropdownMenuItem variant='warning'>warning</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
 );

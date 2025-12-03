@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -14,16 +14,10 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="input-group"
       role="group"
       className={cn(
-        // Base container
         "group/input-group relative flex w-full items-center rounded-md border border-input bg-background shadow-xs transition-colors",
         "h-9 min-w-0 has-[>textarea]:h-auto",
-
-        // Unified focus outline
         "focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/50",
-
-        // Error state
         "has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-destructive/40",
-
         className
       )}
       {...props}
@@ -31,28 +25,36 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-const inputGroupAddonVariants = cva(
+const inputGroupAddonConfig = {
+  align: {
+    "inline-start": "order-first pl-3",
+    "inline-end": "order-last pr-3",
+    "block-start": "order-first w-full justify-start px-3 pt-3",
+    "block-end": "order-last w-full justify-start px-3 pb-3",
+  },
+} as const
+
+export const inputGroupAddonVariants = cva(
   "text-muted-foreground flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium select-none [&>svg:not([class*='size-'])]:size-4",
   {
-    variants: {
-      align: {
-        "inline-start": "order-first pl-3",
-        "inline-end": "order-last pr-3",
-        "block-start": "order-first w-full justify-start px-3 pt-3",
-        "block-end": "order-last w-full justify-start px-3 pb-3",
-      },
-    },
+    variants: inputGroupAddonConfig,
     defaultVariants: {
       align: "inline-start",
     },
   }
 )
 
+export type InputGroupAddonAlign = keyof typeof inputGroupAddonConfig.align
+
+export interface InputGroupAddonProps extends React.ComponentProps<"div"> {
+  align?: InputGroupAddonAlign
+}
+
 function InputGroupAddon({
   className,
-  align,
+  align = "inline-start",
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
+}: InputGroupAddonProps) {
   return (
     <div
       role="presentation"
@@ -68,19 +70,31 @@ function InputGroupAddon({
   )
 }
 
-const inputGroupButtonVariants = cva("flex items-center text-sm shadow-none", {
-  variants: {
-    size: {
-      xs: "h-6 px-2 gap-1 rounded-[calc(var(--radius)-5px)]",
-      sm: "h-8 px-2.5 gap-1.5 rounded-md",
-      "icon-xs": "size-6 p-0 rounded-[calc(var(--radius)-5px)]",
-      "icon-sm": "size-8 p-0 rounded-md",
+const inputGroupButtonConfig = {
+  size: {
+    xs: "h-6 px-2 gap-1 rounded-[calc(var(--radius)-5px)]",
+    sm: "h-8 px-2.5 gap-1.5 rounded-md",
+    "icon-xs": "size-6 p-0 rounded-[calc(var(--radius)-5px)]",
+    "icon-sm": "size-8 p-0 rounded-md",
+  },
+} as const
+
+export const inputGroupButtonVariants = cva(
+  "flex items-center text-sm shadow-none",
+  {
+    variants: inputGroupButtonConfig,
+    defaultVariants: {
+      size: "xs",
     },
-  },
-  defaultVariants: {
-    size: "xs",
-  },
-})
+  }
+)
+
+export type InputGroupSize = keyof typeof inputGroupButtonConfig.size
+
+export interface InputGroupButtonProps
+  extends Omit<React.ComponentProps<typeof Button>, "size"> {
+  size?: InputGroupSize
+}
 
 function InputGroupButton({
   className,
@@ -89,8 +103,7 @@ function InputGroupButton({
   variant = "primary",
   size = "xs",
   ...props
-}: Omit<React.ComponentProps<typeof Button>, "size"> &
-  VariantProps<typeof inputGroupButtonVariants>) {
+}: InputGroupButtonProps) {
   return (
     <Button
       type={type}
@@ -99,9 +112,7 @@ function InputGroupButton({
       data-size={size}
       className={cn(
         inputGroupButtonVariants({ size }),
-        // Merge visually with input
         "-ml-px first:ml-0 rounded-l-none last:rounded-r-md",
-        // Remove its own ring
         "focus-visible:ring-0 focus-visible:outline-none",
         className
       )}
