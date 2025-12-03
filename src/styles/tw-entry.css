@@ -1,22 +1,15 @@
 /* ==========================================================
    @datatr-ux/uxlib — RESET (Tailwind-like preflight)
-   Scopé pour NE PAS impacter ODS (data-ods).
-   1) Variables (light/dark)
-   2) Box-sizing et border defaults (hors ODS)
-   3) Typo & éléments neutres (hors ODS)
+   - NE PAS impacter ODS (data-ods)
+   - Corrige la perte de bordures ODS en posant border-style: solid globalement
    ========================================================== */
 
 @layer uxlib-reset {
+
   /* -------------------------
      1) Variables (light)
      ------------------------- */
   :root {
-    /* Non exposed ODS colors */
-    --ods-color-neutral-075: #ececec;
-    --ods-color-information-075: #cef5ff;
-    --ods-color-success-075: #ddf5d1;
-    --ods-color-warning-075: #feefa4;
-    --ods-color-critical-075: #ffd9e3;
     /* Sidebar */
     --sidebar-background: #ffffff;
     --sidebar-foreground: var(--ods-color-text, #0a0a0a);
@@ -39,7 +32,7 @@
     --primary-foreground: #ffffff;
     --secondary: #f9fafb;            /* neutral.50 */
     --secondary-foreground: #737373; /* neutral.500 */
-    --muted: #f9fafb;                /* neutral.50 */
+    --muted: #f5f5f5;                /* neutral.50-ish */
     --muted-foreground: #737373;     /* neutral.500 */
     --accent: var(--ods-color-primary-050, #e6faff);
     --accent-foreground: var(--ods-color-text, #0a0a0a);
@@ -88,7 +81,7 @@
     --primary-foreground: #ffffff;
     --secondary: #f9fafb;            /* neutral.50 */
     --secondary-foreground: #737373; /* neutral.500 */
-    --muted: #f9fafb;                /* neutral.50 */
+    --muted: #f9fafb;
     --muted-foreground: #d1d5db;     /* neutral.300 */
     --accent: var(--ods-color-primary-050, #e6faff);
     --accent-foreground: var(--ods-color-text, #0a0a0a);
@@ -109,31 +102,36 @@
   }
 
   /* ------------------------------------------
-     2) Base reset — scoped HORS ODS
-     - On ne touche jamais aux [data-ods] ni à
-       leurs descendants.
-     - Box-sizing global = safe.
-     - Les resets border/style sont hors ODS.
+     2) Base reset — ordre & portée
      ------------------------------------------ */
 
-  /* Box-sizing global (n’affecte pas les styles ODS) */
+  /* Box-sizing global (OK pour ODS) */
   html { box-sizing: border-box; }
   *, ::before, ::after { box-sizing: inherit; }
 
-  /* Reset des bordures UNIQUEMENT hors ODS  */
+  /* ⚠️ Important :
+     - On pose 'border-style: solid' GLOBAL pour que
+       les composants ODS qui ne définissent que border-width
+       affichent bien une bordure.
+     - On NE met 'border-width: 0' que HORS ODS, pour ne pas
+       écraser la largeur définie par ODS. */
+  *, ::before, ::after {
+    border-style: solid;
+    border-width: 0; /* <- clé pour corriger la perte de bordures ODS */
+  }
+
+  /* Reset des bordures UNIQUEMENT hors ODS */
   :where(:not([data-ods], [data-ods] *)) {
     border-width: 0;
-    border-style: solid;
     border-color: var(--border, #e6e6e6);
-    /* pas de background-color ici pour ne pas
-       perturber la couleur des éléments */
+    /* pas de background-color ici pour éviter d’impacter ODS */
   }
 
   /* ------------------------------------------
      3) Typographie & éléments neutres — hors ODS
      ------------------------------------------ */
 
-  /* Body (safe pour ODS) */
+  /* Body (ne casse pas ODS) */
   body {
     margin: 0;
     font-family: "Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif;
@@ -163,7 +161,6 @@
   :where(body :not([data-ods], [data-ods] *)) h5 { font-size: 18px; }
   :where(body :not([data-ods], [data-ods] *)) h6 { font-size: 16px; }
 
-  /* Variante dark sur les titres (hors ODS) */
   .dark :where(:not([data-ods], [data-ods] *)) h1,
   .dark :where(:not([data-ods], [data-ods] *)) h2,
   .dark :where(:not([data-ods], [data-ods] *)) h3,
@@ -177,8 +174,7 @@
   :where(body :not([data-ods], [data-ods] *)) p { margin: 0; }
 
   :where(body :not([data-ods], [data-ods] *)) svg {
-    display: inline-block;
-    vertical-align: middle;
+    display: block;
     flex-shrink: 0;
     flex-grow: 0;
   }
@@ -203,5 +199,10 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
+  }
+
+  .border {
+    border-width: 1px;
+    border-style: solid;
   }
 }

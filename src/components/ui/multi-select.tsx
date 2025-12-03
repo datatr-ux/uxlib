@@ -34,7 +34,7 @@ const useMultiSelectContext = () => {
 };
 
 /* -------------------- Root -------------------- */
-interface MultiSelectProps {
+export interface MultiSelectProps {
   value: string[];
   onChange: (val: string[]) => void;
   children: React.ReactNode;
@@ -82,7 +82,7 @@ const MultiSelect = ({ value, onChange, disabled = false, children }: MultiSelec
 MultiSelect.displayName = "MultiSelect";
 
 /* -------------------- Trigger -------------------- */
-interface MultiSelectTriggerProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface MultiSelectTriggerProps extends React.HTMLAttributes<HTMLButtonElement> {
   placeholder?: string;
   children: React.ReactNode;
 }
@@ -99,7 +99,7 @@ const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelectTrigge
           variant="neutral"
           mode={"outline"}
           role="combobox"
-          className={cn("min-h-10 h-auto flex flex-wrap justify-start gap-2 hover:bg-background active:bg-background focus:bg-background", className)}
+          className={cn("min-h-10 h-auto flex flex-wrap justify-start gap-1 hover:bg-background active:bg-background focus:bg-background py-1", className)}
           {...props}
         >
           {value.length > 0 ? (
@@ -115,7 +115,7 @@ const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelectTrigge
 MultiSelectTrigger.displayName = "MultiSelectTrigger";
 
 /* -------------------- Value -------------------- */
-interface MultiSelectValueProps extends React.HTMLAttributes<HTMLDivElement>  {
+export interface MultiSelectValueProps extends React.HTMLAttributes<HTMLDivElement>  {
   children: React.ReactNode;
   onRemove?: () => void;
   value?: string;
@@ -153,7 +153,7 @@ const MultiSelectValue = ({ children, onRemove, value, className, ...props }: Mu
 MultiSelectValue.displayName = "MultiSelectValue";
 
 /* -------------------- Content -------------------- */
-interface MultiSelectContentProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface MultiSelectContentProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   classNameCommand?: string;
 }
@@ -195,7 +195,7 @@ const MultiSelectEmpty = ({ children, ...props }: React.ComponentPropsWithoutRef
 MultiSelectEmpty.displayName = "MultiSelectEmpty";
 
 /* -------------------- Item -------------------- */
-interface MultiSelectItemProps extends Omit<React.ComponentPropsWithoutRef<typeof CommandItem>, "value"> {
+export interface MultiSelectItemProps extends Omit<React.ComponentPropsWithoutRef<typeof CommandItem>, "value"> {
   value: string;
   className?: string;
   checkBoxClassName?: string;
@@ -230,7 +230,7 @@ const MultiSelectGroup = ({ children, ...props }: React.ComponentPropsWithoutRef
 MultiSelectGroup.displayName = "MultiSelectGroup";
 
 /* -------------------- Select All -------------------- */
-interface MultiSelectAllItemProps extends Omit<React.ComponentPropsWithoutRef<typeof CommandItem>, "value"> {
+export interface MultiSelectAllItemProps extends Omit<React.ComponentPropsWithoutRef<typeof CommandItem>, "value"> {
   onClick?: () => void;
   className?: string;
   checkBoxClassName?: string;
@@ -265,7 +265,7 @@ const MultiSelectAllItems = ({
 };
 MultiSelectAllItems.displayName = "MultiSelectAllItems";
 
-interface MultiSelectCommandButton extends React.ComponentPropsWithoutRef<typeof CommandItem> {
+export interface MultiSelectCommandButton extends React.ComponentPropsWithoutRef<typeof CommandItem> {
   onClick?: () => void;
   className?: string;
   children?: React.ReactNode;

@@ -53,7 +53,7 @@ const terraform = terraformArr[0];
 const githubDark = githubDarkTheme;
 const githubLight = githubLightTheme;
 
-interface CodeProps {
+export interface CodeProps {
   code: string;
   lang?: LanguageRegistration;
   theme?: ThemeRegistration;
@@ -155,6 +155,7 @@ const Code = ({
           "[&>pre]:rounded-b-sm",
           "[&>pre]:overflow-x-auto",
           "[&>pre]:p-2",
+          "[&>pre]:m-0",
           "overflow-auto",
           wrap && '[&>pre]:whitespace-pre-wrap [&>pre]:break-all',
           showTopbar && "pt-9",

@@ -8,14 +8,14 @@ export default {
   argTypes: {
     variant: {
       control: "select",
-      options: ["primary", "destructive", "success", "warning","neutral"],
+      options: ["primary", "critical", "success", "warning","neutral", 'information'],
     },
   },
 } as Meta;
 
 const Template: StoryFn = (args) => (
   <Alert {...args}>
-    <AlertCircleIcon className="h-4 w-4"/>
+    <AlertCircleIcon className="h-5 w-5 pt-[0.125rem]"/>
     <div>
       <AlertTitle>Alert Title</AlertTitle>
       <AlertDescription>
@@ -50,4 +50,9 @@ Success.args = {
 export const Warning = Template.bind({});
 Warning.args = {
   variant: "warning",
+};
+
+export const Information = Template.bind({});
+Information.args = {
+  variant: "information",
 };

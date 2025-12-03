@@ -1,7 +1,10 @@
+import odsPreset from "./tailwind.preset.js";
 /** @type {import('tailwindcss').Config} */
 export default {
 	darkMode: ['class'],
-	content: ['./src/**/*.{js,jsx,ts,tsx}'],
+	presets: [odsPreset],
+	content: ['./src/**/*.{js,jsx,ts,tsx}',
+  './src/demo/**/*.{js,jsx,ts,tsx}'],
 	theme: {
 		extend: {
 			keyframes: {
@@ -80,6 +83,6 @@ export default {
 			},
 		}
 	},
-	plugins: [require('tailwindcss-animate'),  require('@datatr-ux/ods-tailwind-config')],
+	plugins: [require('tailwindcss-animate')],
 };
 
